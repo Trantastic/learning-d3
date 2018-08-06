@@ -9,9 +9,18 @@
 	<script type="text/javascript">
 		var data = [300, 200, 900, 430, 120, 370, 905, 535, 654, 765];
 
-		var height = 500;
+		var height = 300;
 		var width = 500;
 		var barPadding = 3;
+
+		var xScale = d3.scaleBand()
+					   .domain(d3.range(data.length))
+					   .rangeRound([0, width])
+					   .paddingInner(0.05);
+
+		var yScale = d3.scaleLinear()
+					   .domain([0, d3.max(data)])
+					   .range([0, height]);
 
 		var svg = d3.select("body")
 					.append("svg")
@@ -23,15 +32,16 @@
 		   .enter()
 		   .append("rect")
 		   .attr("x", function(d, i) {
-		   		return i * (width / data.length);
+		   		return xScale(i);
 		   })
 		   .attr("y", function(d) {
-		   		return height - (d * 1);
+		   		return height - yScale(d);
 		   })
-		   .attr("width", width / data.length - barPadding)
+		   .attr("width", xScale.bandwidth())
 		   .attr("height", function(d) {
-		   		return d * 4;
-		   });
+		   		return yScale(d);
+		   })
+		   .attr("fill", "teal");
 
 	</script>
 </body>
