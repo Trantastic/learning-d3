@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3.js Bar Chart</title>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+	<h1>A bar chart with random data</h1>
+	<script type="text/javascript">
+		var data = [300, 200, 900, 430, 120, 370, 905, 535, 654, 765];
+
+		var height = 500;
+		var width = 500;
+		var barPadding = 3;
+
+		var svg = d3.select("body")
+					.append("svg")
+					.attr("height", height)
+					.attr("width", width);
+
+		svg.selectAll("rect")
+		   .data(data)
+		   .enter()
+		   .append("rect")
+		   .attr("x", function(d, i) {
+		   		return i * (width / data.length);
+		   })
+		   .attr("y", function(d) {
+		   		return height - (d * 1);
+		   })
+		   .attr("width", width / data.length - barPadding)
+		   .attr("height", function(d) {
+		   		return d * 4;
+		   });
+
+	</script>
+</body>
+</html>
