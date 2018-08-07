@@ -8,7 +8,7 @@
 	<h1>A bar chart with random data</h1>
 	<script type="text/javascript">
 		// This is the data I'm using to make the bars
-		var data = [300, 200, 900, 430, 120, 370, 810, 535, 654];
+		var data = [300, 200, 900, 430, 100, 370, 510, 585, 654];
 
 		// Specifiying the size of the bar graph
 		var height = 250;
@@ -22,7 +22,7 @@
 					   /* Specify how wide each bar/band should be.
 					   (width - 0) / xScale.domain().length
 					   600/20 = 30, each band will be 30 wide */
-					   .rangeRound([0, width])
+					   .range([0, width])
 					   // Spacing between bars
 					   .paddingInner(0.05);
 
@@ -42,9 +42,11 @@
 		   .data(data)
 		   .enter()
 		   .append("rect")
+		   // Sets the x values
 		   .attr("x", function(d, i) {
 		   		return xScale(i);
 		   })
+		   // Scales height according to var height value and data value
 		   .attr("y", function(d) {
 		   		return height - yScale(d);
 		   })
