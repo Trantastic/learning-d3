@@ -15,9 +15,15 @@
 		var width = 600;
 		var barPadding = 3;
 
+		// d3.scaleBand() will order values/bars left to right. It's a specific ordinal scale that helps to even space the bars in arbitary order
 		var xScale = d3.scaleBand()
+					   // d3.range() generates dequential #s, so this will generate 9 since data.length = 9
 					   .domain(d3.range(data.length))
+					   /* Specify how wide each bar/band should be.
+					   (width - 0) / xScale.domain().length
+					   600/20 = 30, each band will be 30 wide */
 					   .rangeRound([0, width])
+					   // Spacing between bars
 					   .paddingInner(0.05);
 
 		// This scales the height of values from data
