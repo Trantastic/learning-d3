@@ -7,10 +7,12 @@
 <body>
 	<h1>A bar chart with random data</h1>
 	<script type="text/javascript">
-		var data = [300, 200, 900, 430, 120, 370, 905, 535, 654, 765];
+		// This is the data I'm using to make the bars
+		var data = [300, 200, 900, 430, 120, 370, 810, 535, 654];
 
-		var height = 300;
-		var width = 500;
+		// Specifiying the size of the bar graph
+		var height = 250;
+		var width = 600;
 		var barPadding = 3;
 
 		var xScale = d3.scaleBand()
@@ -18,15 +20,18 @@
 					   .rangeRound([0, width])
 					   .paddingInner(0.05);
 
+		// This scales the height of values from data
 		var yScale = d3.scaleLinear()
 					   .domain([0, d3.max(data)])
 					   .range([0, height]);
 
+		// Creating the SVG element and appending it to body tag
 		var svg = d3.select("body")
 					.append("svg")
 					.attr("height", height)
 					.attr("width", width);
 
+		// Create a rect for every value in data and append to SVG element
 		svg.selectAll("rect")
 		   .data(data)
 		   .enter()
@@ -41,6 +46,7 @@
 		   .attr("height", function(d) {
 		   		return yScale(d);
 		   })
+		   // Make fill color teal for bars
 		   .attr("fill", "teal");
 
 	</script>
