@@ -17,7 +17,8 @@ d3.selectAll()
 
 All selection methods return a new selection. Meaning you can only make a new one and overwrite it. You can't modify it. 
 
-Selections are objects. You can chain selects together:  
+Selections are objects. You can chain selects together:
+ 
 	var allGroups = d3.selectAll("g");
 	var allCircles = d3.selectAll("circle");
 	var allCirclesInGroups. d3.selectAll("g").selectAll("circle");
