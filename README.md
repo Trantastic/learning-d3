@@ -33,6 +33,6 @@ Selections are objects. You can chain selects together:
 To exclude a value, if you know a value is N/A or an invalid value:
 
 	var line = d3.line()
-			 .defined((d) => d.average >= 0;) //if false, the value will be thrown out
-			 .x((d) => xScale(d.date))
-			 .y((d) => yScale(d.average));
+		.defined((d) => d.average >= 0;) //if false, the value will be thrown out
+		.x((d) => xScale(d.date))
+		.y((d) => yScale(d.average));
