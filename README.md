@@ -1,7 +1,12 @@
 # learning-d3
 *These are my notes while learning D3.js*
 
-# Starting
+# Table of contents
+1. [Starting](#starting)
+2. [Selections](#selections)
+3. [Missing Data](#missing)
+
+# Starting <a name="starting"></a>
 Grab the CDN: [https://d3js.org/]
 
 	<!DOCTYPE html>
@@ -11,7 +16,7 @@ Grab the CDN: [https://d3js.org/]
 		<script src="https://d3js.org/d3.v5.min.js"></script>
 	</head>
 
-# Selections
+# Selections <a name="selections"></a>
 `d3.select()` => selects a specific element or the first of that element  
 `d3.selectAll()` => selects ALL elements that match
 
@@ -25,7 +30,7 @@ Selections are objects. You can chain selects together:
 
 	simplify => var allCirclesInGroups = d3.selectAll("g circle");
 
-# Dealing with missing data
+# Dealing with missing data <a name="missing"></a>
 `.define()` => checks if the value exists and returns true or false
 
 `.define((d) => d)` => if d exists return true, if doesn't exist return false
