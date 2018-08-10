@@ -12,8 +12,8 @@ Grab the CDN: [https://d3js.org/]
 	</head>
 
 # Selections
-d3.select() => selects a specific element or the first of that element  
-d3.selectAll() => selects ALL elements that match
+`d3.select()` => selects a specific element or the first of that element  
+`d3.selectAll()` => selects ALL elements that match
 
 All selection methods return a new selection. Meaning you can only make a new one and overwrite it. You can't modify it. 
 
@@ -24,3 +24,15 @@ Selections are objects. You can chain selects together:
 	var allCirclesInGroups. d3.selectAll("g").selectAll("circle");
 
 	simplify => var allCirclesInGroups = d3.selectAll("g circle");
+
+# Dealing with missing data
+`.define()` => checks if the value exists and returns true or false
+
+`.define((d) => d)` => if d exists return true, if doesn't exist return false
+
+To exclude a value, if you know a value is N/A or an invalid value:
+
+	var line = d3.line()
+				 .defined((d) => d.average >= 0;) //if false, the value will be thrown out
+				 .x((d) => xScale(d.date))
+				 .y((d) => yScale(d.average));
