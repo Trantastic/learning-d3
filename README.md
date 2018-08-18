@@ -4,7 +4,8 @@
 # Table of contents
 1. [Starting](#starting)
 2. [Selections](#selections)
-3. [Missing Data](#missing)
+3. [Scaling](#scaling)
+4. [Missing Data](#missing)
 
 # Starting <a name="starting"></a>
 Grab the CDN: [https://d3js.org/]
@@ -29,6 +30,19 @@ Selections are objects. You can chain selects together:
 	var allCirclesInGroups. d3.selectAll("g").selectAll("circle");
 
 	simplify => var allCirclesInGroups = d3.selectAll("g circle");
+
+# Scaling <a name="scaling"></a>
+Ordinal Scales = specific order (i.e. smallest to biggest, left to right, etc.)
+
+	var xScale = d3.scaleBand() //Orders values/bars left to right
+		.domain(d3.range(dataset.length)) //d3.range method sets/generates sequential #s
+		.range([0, width]) //Calculates event bars/bands starting at 0 and ending at width
+		.paddingInner(0.05); //Spacing between bars
+
+Example of calculation of .range():  
+(width - 0) / xScale.domain().length  
+(600 - 0) / 20  
+600 / 20 = __30__
 
 # Dealing with missing data <a name="missing"></a>
 `.define()` => checks if the value exists and returns true or false
