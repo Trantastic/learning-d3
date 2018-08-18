@@ -21,7 +21,8 @@
 
 		const xScale = d3.scaleLinear()
 			.domain([0, d3.max(data, (d) => d[0])])
-			.range([padding, width - padding]);
+			// Double the xScale's padding on the right side to prevent the labels from being cut off
+			.range([padding, width - padding * 2]);
 
 		const yScale = d3.scaleLinear()
 			.domain([0, d3.max(data, (d) => d[1])])
@@ -51,6 +52,8 @@
 			.attr("y", (d) => yScale(d[1]))
 			.attr("font-family", "sans-serif")
 			.attr("font-size", "15px")
+
+
 
 	</script>
 
